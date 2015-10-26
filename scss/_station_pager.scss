@@ -1,0 +1,41 @@
+.db-station-pager {
+	width: 100%;
+	text-align: center;
+	line-height: 32px;
+
+	a {
+		display: inline-block;
+		margin: 0 3px;
+
+		i {
+			opacity: .5;
+			display: block;
+			@include transition(opacity .3s);
+
+			&.dot {
+				width: 5px;
+				height: 5px;
+				border-radius: 50%;
+				background: #fff;
+				margin: 1px 0;
+			}
+
+			&.location {
+				font-family: $ionicons-font-family;
+				color: #fff;
+				font-size: 10px;
+				line-height: 100%;
+
+				&:before {
+					content: $ionicon-var-navigate;
+				}
+			}
+		}
+
+		&.selected {
+			i {
+				opacity: 1;
+			}
+		}
+	}
+}
