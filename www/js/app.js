@@ -1,6 +1,6 @@
 // Ionic Starter App
 
-angular.module('deep-breath', ['ionic', 'ngCordova', 'sprintf', 'dbStationPager'])
+angular.module('deep-breath', ['ionic', 'ngCordova', 'sprintf', 'dbStationPager', 'angular-svg-round-progress'])
 	.run(function ($ionicPlatform) {
 		$ionicPlatform.ready(function () {
 			if (window.cordova && window.cordova.plugins.Keyboard) {

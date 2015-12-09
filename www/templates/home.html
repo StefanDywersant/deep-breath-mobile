@@ -1,14 +1,49 @@
 <ion-view ion-title="Home" id="home">
+	<svg>
+		<linearGradient id="indicator-gradient-1" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#00ff00" />
+			<stop offset="80%" stop-color="#00e600" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-2" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#a6ff00" />
+			<stop offset="80%" stop-color="#95e600" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-3" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#e6ff00" />
+			<stop offset="80%" stop-color="#cfe600" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-4" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#ffc800" />
+			<stop offset="80%" stop-color="#e6b400" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-5" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#e25a00" />
+			<stop offset="80%" stop-color="#c95000" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-6" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#8b0000" />
+			<stop offset="80%" stop-color="#720000" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-bg" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#ffffff" stop-opacity="0.15" />
+			<stop offset="80%" stop-color="#ffffff" stop-opacity="0.4"/>
+		</linearGradient>
+	</svg>
 	<ion-content scroll="false">
 		<ion-slide-box show-pager="false" delegate-handle="stations" on-slide-changed="slideChanged($index)">
 			<ion-slide ng-repeat="station in stations">
 				<ion-content delegate-handle="station-{{$index}}">
 					<p class="station-name"><i class="icon ion-ios-location"></i> {{station.name}}</p>
-					<div class="overall">
-						<i class="icon ion-checkmark-circled"></i>
+					<div ng-if="station.index" class="overall">
+						<div round-progress class="station-indicator" radius="40" max="12" current="12 - station.index.value" bgcolor="url(#indicator-gradient-bg)" color="url(#indicator-gradient-{{station.index.score}})"></div>
 						<div class="right">
 							<label>Jakość powietrza</label>
-							<p class="air-quality">Bardzo dobra</p>
+							<p ng-if="station.index.score == 1" class="air-quality">Bardzo dobra</p>
+							<p ng-if="station.index.score == 2" class="air-quality">Dobra</p>
+							<p ng-if="station.index.score == 3" class="air-quality">Umiarkowana</p>
+							<p ng-if="station.index.score == 4" class="air-quality">Dostateczna</p>
+							<p ng-if="station.index.score == 5" class="air-quality">Zła</p>
+							<p ng-if="station.index.score == 6" class="air-quality">Bardzo zła</p>
 						</div>
 					</div>
 					<div class="table {{group.code}}" ng-repeat="group in station.parameter_groups" ng-init="channels = (station.channels | channelsGroup : group.parameters)">
@@ -16,20 +51,13 @@
 							<h2>{{group.name}}</h2>
 							<div ng-repeat="channel in channels" class="row {{channel.parameter.code}}">
 								<div class="col icon">
-									<i ng-if="channel.parameter.code == 'co'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'pm10'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'pm10_as'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'pm10_bap'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'pm10_cd'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'pm10_ni'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'pm2.5'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'no'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'no2'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'nox'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'so2'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'o3'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'bzn'" class="quality"></i>
-									<i ng-if="channel.parameter.code == 'pb'" class="quality"></i>
+									<i ng-if="channel.parameter.code == 'co'" class="quality score-{{channel.index.score}}"></i>
+									<i ng-if="channel.parameter.code == 'pm10'" class="quality score-{{channel.index.score}}"></i>
+									<i ng-if="channel.parameter.code == 'pm2.5'" class="quality score-{{channel.index.score}}"></i>
+									<i ng-if="channel.parameter.code == 'no2'" class="quality score-{{channel.index.score}}"></i>
+									<i ng-if="channel.parameter.code == 'so2'" class="quality score-{{channel.index.score}}"></i>
+									<i ng-if="channel.parameter.code == 'bzn'" class="quality score-{{channel.index.score}}"></i>
+									<i ng-if="channel.parameter.code == 'o3'" class="quality score-{{channel.index.score}}"></i>
 
 									<i ng-if="channel.parameter.code == 'temp'" class="wi wi-thermometer"></i>
 									<i ng-if="channel.parameter.code == 'humid'" class="wi wi-humidity"></i>
