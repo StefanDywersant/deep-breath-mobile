@@ -33,9 +33,26 @@
 				width: 280px;
 				margin: 2em auto;
 
-				.round-progress {
+				.indicator {
+					position: relative;
 					float: left;
-					margin-right: 8px;
+
+					.progress {
+						margin-right: 8px;
+					}
+
+					.value {
+						position: absolute;
+						top: 40px;
+						left: 40px;
+						transform: translate(-50%, -50%);
+						color: #fff;
+						font-size: 12px;
+
+						small {
+							font-size: 9px;
+						}
+					}
 				}
 
 				.right {
