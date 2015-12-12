@@ -1,7 +1,7 @@
 // Ionic Starter App
 
-angular.module('deep-breath', ['ionic', 'ngCordova', 'sprintf', 'dbStationPager', 'angular-svg-round-progress'])
-	.run(function ($ionicPlatform) {
+angular.module('deep-breath', ['ionic', 'ngCordova', 'sprintf', 'dbStationPager', 'angular-svg-round-progress', 'angularMoment'])
+	.run(function ($ionicPlatform, amMoment) {
 		$ionicPlatform.ready(function () {
 			if (window.cordova && window.cordova.plugins.Keyboard) {
 				cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -11,4 +11,6 @@ angular.module('deep-breath', ['ionic', 'ngCordova', 'sprintf', 'dbStationPager'
 				StatusBar.styleDefault();
 			}
 		});
+
+		amMoment.changeLocale('pl');
 	});

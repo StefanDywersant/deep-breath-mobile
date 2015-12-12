@@ -52,7 +52,7 @@
 					<div ng-repeat="channel_group in station.channel_groups">
 						<div class="table {{group.code}}" ng-repeat="group in station.parameter_groups" ng-init="channels = (channel_group.channels | channelsGroup : group.parameters)">
 							<div ng-if="channels.length">
-								<h2>{{group.name}}</h2>
+								<h2>{{group.name}}<span class="time-ago"><i class="icon ion-clock"></i><span am-time-ago="channel_group.end"></span></span></h2>
 								<div ng-repeat="channel in channels" class="row {{channel.parameter.code}}">
 									<div class="col icon">
 										<i ng-if="channel.parameter.code == 'co'" class="quality score-{{channel.index.score}}"></i>

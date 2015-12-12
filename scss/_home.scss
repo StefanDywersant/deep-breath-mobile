@@ -84,6 +84,19 @@
 					color: rgba(255,255,255,0.7);
 					padding: 0 20px;
 					line-height: 18px;
+
+					.time-ago {
+						float: right;
+
+						i {
+							margin-right: 5px;
+							vertical-align: middle;
+						}
+
+						span {
+							font-size: 8px;
+						}
+					}
 				}
 
 				.row {
