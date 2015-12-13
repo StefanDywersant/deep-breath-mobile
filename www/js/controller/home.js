@@ -1,10 +1,10 @@
 angular.module('deep-breath')
-	.controller('HomeCtrl', function($scope, $ionicPlatform, $cordovaGeolocation, Stations, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+	.controller('HomeCtrl', function($scope, $q, $ionicPlatform, $cordovaGeolocation, Stations, $ionicSlideBoxDelegate, $ionicScrollDelegate, CONFIG) {
 
 		var slideBox = $ionicSlideBoxDelegate.$getByHandle('stations');
 
-		$ionicPlatform.ready(function() {
-			$cordovaGeolocation.getCurrentPosition().then(function(position) {
+		var refresh = function() {
+			return $cordovaGeolocation.getCurrentPosition().then(function(position) {
 				return Stations.nearest({
 					longitude: position.coords.longitude,
 					latitude: position.coords.latitude
@@ -15,8 +15,13 @@ angular.module('deep-breath')
 			}, function(error) {
 				console.log(error.stack);
 			});
-		});
+		};
 
+		$ionicPlatform.ready(function() {
+			document.addEventListener('resume', refresh, false);
+			setInterval(refresh, CONFIG.TTL);
+			refresh();
+		});
 
 		$scope.slideChanged = function(index) {
 			setTimeout(function() {
