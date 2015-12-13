@@ -2,13 +2,34 @@ angular.module('deep-breath')
 	.factory('Stations', function(CONFIG, $http, $q) {
 
 
-		var entitize = function(station) {
-			station.channel_groups.forEach(function(channel_group) {
-				channel_group.begin = new Date(channel_group.begin);
-				channel_group.end = new Date(channel_group.end);
-			});
-
-			return station;
+		var entitize = function(apiStation) {
+			return {
+				uuid: apiStation.uuid,
+				name: apiStation.name,
+				address: apiStation.address,
+				location: apiStation.location,
+				flags: apiStation.flags,
+				parameter_groups: apiStation.parameter_groups,
+				channel_groups: apiStation.channel_groups.map(function(channel_group) {
+					return {
+						begin: new Date(channel_group.begin),
+						end: new Date(channel_group.end),
+						channels: channel_group.channels.map(function(channel) {
+							return {
+								uuid: '',
+								last_measurement: {
+									begin: channel.last_measurement.begin,
+									end: channel.last_measurement.end,
+									value: channel.last_measurement.value
+								},
+								parameter: channel.parameter,
+								index: channel.index
+							}
+						}),
+						index: channel_group.index
+					}
+				})
+			};
 		};
 
 
@@ -20,8 +41,8 @@ angular.module('deep-breath')
 					throw new Error('Cannot download database: ' + response.statusText);
 
 				return response.data;
-			}).then(function(stations) {
-				return $q.all(stations.map(entitize));
+			}).then(function(apiStations) {
+				return $q.all(apiStations.map(entitize));
 			});
 		};
 
