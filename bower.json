@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "open-sans-fontface": "~1.4.2",
-    "weather-icons": "~2.0.10"
+    "weather-icons": "~2.0.10",
+    "angular-q-spread": "~1.1.0"
   }
 }

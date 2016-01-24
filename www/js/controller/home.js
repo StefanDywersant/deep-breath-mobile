@@ -1,11 +1,22 @@
 angular.module('deep-breath')
-	.controller('HomeCtrl', function($scope, $q, $ionicPlatform, $cordovaGeolocation, Stations, $ionicSlideBoxDelegate, $ionicScrollDelegate, CONFIG) {
+	.controller('HomeCtrl', function($scope, $q, ChosenStations, $ionicPlatform, $cordovaGeolocation, Stations, $ionicSlideBoxDelegate, $ionicScrollDelegate, CONFIG) {
 
 		var slideBox = $ionicSlideBoxDelegate.$getByHandle('stations');
 
+		var fetchStations = function(position) {
+			return $q.all([
+				Stations.nearest(position),
+				ChosenStations.all()
+			]).spread(function(nearestStations, chosenStations) {
+				return nearestStations
+					.slice(0, 1)
+					.concat(chosenStations)
+			});
+		};
+
 		var refresh = function() {
 			return $cordovaGeolocation.getCurrentPosition().then(function(position) {
-				return Stations.nearest({
+				return fetchStations({
 					longitude: position.coords.longitude,
 					latitude: position.coords.latitude
 				});

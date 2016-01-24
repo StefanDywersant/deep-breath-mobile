@@ -1,0 +1,26 @@
+<ion-view ion-title="Add" id="add">
+	<ion-header-bar class="bar-stable">
+		<a class="button button-clear button-positive" ng-href="#/settings">Cancel</a>
+		<h1 class="title">Add station</h1>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list>
+			<div ng-repeat="stationInfosByVoivodeship in stationInfosByVoivodeships">
+				<div ng-repeat="stationInfo in stationInfosByVoivodeship.stationInfos">
+					<ion-item ng-if="$index == 0" class="item-divider"><strong>{{stationInfosByVoivodeship.voivodeship}}</strong></ion-item>
+					<ion-item ng-click="add(stationInfo)">
+						<h2>{{stationInfo.station.name}}</h2>
+						<p>{{[stationInfo.station.address.city, stationInfo.station.address.code, stationInfo.station.address.street].join(', ')}}</p>
+						<p>
+							<small>
+								<i class="icon" ng-class="{'ion-checkmark-circled balanced': stationInfo.last_measurement.status, 'ion-alert-circled assertive': !stationInfo.last_measurement.status}"></i>
+								<span ng-if="stationInfo.last_measurement.date">Ostatni pomiar: <span am-time-ago="stationInfo.last_measurement.date"></span></span>
+								<span ng-if="!stationInfo.last_measurement.date">Ostatni pomiar: brak</span>
+							</small>
+						</p>
+					</ion-item>
+				</div>
+			</div>
+		</ion-list>
+	</ion-content>
+</ion-view>
