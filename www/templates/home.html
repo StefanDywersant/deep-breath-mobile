@@ -40,13 +40,13 @@
 							<span class="value">{{overallIndex.value | number : 1}}<small> / 10</small></span>
 						</div>
 						<div class="right">
-							<label>Jakość powietrza</label>
-							<p ng-if="overallIndex.score == 1" class="air-quality">Bardzo dobra</p>
-							<p ng-if="overallIndex.score == 2" class="air-quality">Dobra</p>
-							<p ng-if="overallIndex.score == 3" class="air-quality">Umiarkowana</p>
-							<p ng-if="overallIndex.score == 4" class="air-quality">Dostateczna</p>
-							<p ng-if="overallIndex.score == 5" class="air-quality">Zła</p>
-							<p ng-if="overallIndex.score == 6" class="air-quality">Bardzo zła</p>
+							<label translate>Air quality</label>
+							<p ng-if="overallIndex.score == 1" class="air-quality" translate>Very good</p>
+							<p ng-if="overallIndex.score == 2" class="air-quality" translate>Good</p>
+							<p ng-if="overallIndex.score == 3" class="air-quality" translate>Moderate</p>
+							<p ng-if="overallIndex.score == 4" class="air-quality" translate>Sufficient</p>
+							<p ng-if="overallIndex.score == 5" class="air-quality" translate>Bad</p>
+							<p ng-if="overallIndex.score == 6" class="air-quality" translate>Very bad</p>
 						</div>
 					</div>
 					<div ng-repeat="channel_group in station.channel_groups">

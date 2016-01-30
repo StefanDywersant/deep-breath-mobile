@@ -1,5 +1,5 @@
 angular.module('deep-breath')
-	.factory('Stations', function(CONFIG, $http, $q) {
+	.factory('Stations', function(CONFIG, $http, $httpParamSerializer, $q) {
 
 
 		var entitize = function(apiStation) {
@@ -33,18 +33,26 @@ angular.module('deep-breath')
 		};
 
 
-		var nearest = function(position, distance, limit) {
+		var nearest = function(o) {
 			var path = [
-				CONFIG.BACKEND_URL,
-				'stations/nearest',
-				position.latitude + ',' + position.longitude,
-				distance ? distance : CONFIG.NEAREST_DISTANCE
-			];
+					CONFIG.BACKEND_URL,
+					'stations/nearest',
+					o.position.latitude + ',' + o.position.longitude
+				],
+				qs = {};
 
-			if (limit)
-				path.push(limit);
+			if (typeof(o.distance) == 'number')
+				qs.distance = o.distance;
 
-			return $http.get(path.join('/')).then(function(response) {
+			if (typeof(o.limit) == 'number')
+				qs.limit = o.limit;
+
+			if (typeof(o.useful) == 'boolean')
+				qs.useful = o.useful ? 1 : 0;
+
+			return $http.get(
+				path.join('/') + '?' + $httpParamSerializer(qs)
+			).then(function(response) {
 				if (response.status !== 200)
 					throw new Error('Cannot fetch stations: ' + response.statusText);
 
@@ -55,17 +63,25 @@ angular.module('deep-breath')
 		};
 
 
-		var search = function(query, offset, limit) {
-			var path = [CONFIG.BACKEND_URL + '/stations/search', query];
+		var search = function(o) {
+			var path = [
+					CONFIG.BACKEND_URL + '/stations/search',
+					o.query
+				],
+				qs = {};
 
-			if (typeof(offset) == 'number')
-				path.push(offset);
+			if (typeof(o.offset) == 'number')
+				qs.offset = o.offset;
 
-			//@todo: fix - what if offset is not defined?
-			if (typeof(limit) == 'number')
-				path.push(limit);
+			if (typeof(o.limit) == 'number')
+				qs.limit = o.limit;
 
-			return $http.get(path.join('/')).then(function (response) {
+			if (typeof(o.useful) == 'boolean')
+				qs.useful = o.useful ? 1 : 0;
+
+			return $http.get(
+				path.join('/') + '?' + $httpParamSerializer(qs)
+			).then(function (response) {
 				if (response.status !== 200)
 					throw new Error('Cannot fetch stations: ' + response.statusText);
 
@@ -76,12 +92,12 @@ angular.module('deep-breath')
 		};
 
 
-		var all = function() {
+		var all = function(o) {
 			var allStations = [],
 				i = 0;
 
 			var fetch = function() {
-				return search('', i, 150).then(function(stations) {
+				return search({query: '', offset: i, limit: 150, useful: o.useful}).then(function(stations) {
 					allStations = allStations.concat(stations);
 
 					if (stations.length < 150)

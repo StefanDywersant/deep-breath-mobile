@@ -1,52 +1,71 @@
 angular.module('deep-breath')
-	.controller('AddCtrl', function($scope, $location, Stations, ChosenStations) {
+	.controller('AddCtrl', function($scope, $location, Stations, ChosenStations, $ionicScrollDelegate) {
 
-		Stations.all().then(function(stations) {
-			var stationInfosByVoivodeships = stations.map(function(station) {
-				var date = station.channel_groups.reduce(function(maxEnd, channelGroup) {
-					return maxEnd > channelGroup.end ? maxEnd : channelGroup.end;
-				}, 0);
+		$scope.useful = true;
 
-				var status = (function() {
-					if (new Date(date).getTime() + (24 * 60 * 60 * 1000) >= Date.now())
-						return 1;
+		$scope.loading = true;
 
-					if (new Date(date).getTime() + (24 * 60 * 60 * 1000) < Date.now())
-						return 0;
+		$scope.switchUseful = function(useful) {
+			$scope.useful = useful;
+			refresh();
+			$ionicScrollDelegate.scrollTop(false);
+		};
 
-					return -1;
-				})();
+		var refresh = function() {
+			$scope.loading = true;
+			$scope.stationInfosByVoivodeships = [];
 
-				return {
-					station: station,
-					last_measurement: {
-						date: date ? new Date(date) : null,
-						status: status
-					}
-				};
-			}).reduce(function(result, stationInfo) {
-				if (stationInfo.station.address.voivodeship in result)
-					result[stationInfo.station.address.voivodeship].push(stationInfo);
-				else
-					result[stationInfo.station.address.voivodeship] = [stationInfo];
+			Stations.all({useful: $scope.useful}).then(function(stations) {
+				var stationInfosByVoivodeships = stations.map(function(station) {
+					var date = station.channel_groups.reduce(function(maxEnd, channelGroup) {
+						return maxEnd > channelGroup.end ? maxEnd : channelGroup.end;
+					}, 0);
 
-				return result;
-			}, {});
+					var status = (function() {
+						if (new Date(date).getTime() + (24 * 60 * 60 * 1000) >= Date.now())
+							return 1;
 
-			$scope.stationInfosByVoivodeships = Object.keys(stationInfosByVoivodeships).map(function(voivodeship) {
-				return {
-					voivodeship: voivodeship,
-					stationInfos: stationInfosByVoivodeships[voivodeship]
-				};
-			}).sort(function(a, b) {
-				return a.voivodeship > b.voivodeship ? 1 : -1;
+						if (new Date(date).getTime() + (24 * 60 * 60 * 1000) < Date.now())
+							return 0;
+
+						return -1;
+					})();
+
+					return {
+						station: station,
+						last_measurement: {
+							date: date ? new Date(date) : null,
+							status: status
+						}
+					};
+				}).reduce(function(result, stationInfo) {
+					if (stationInfo.station.address.voivodeship in result)
+						result[stationInfo.station.address.voivodeship].push(stationInfo);
+					else
+						result[stationInfo.station.address.voivodeship] = [stationInfo];
+
+					return result;
+				}, {});
+
+				$scope.stationInfosByVoivodeships = Object.keys(stationInfosByVoivodeships).map(function(voivodeship) {
+					return {
+						voivodeship: voivodeship,
+						stationInfos: stationInfosByVoivodeships[voivodeship]
+					};
+				}).sort(function(a, b) {
+					return a.voivodeship > b.voivodeship ? 1 : -1;
+				});
+
+				$scope.loading = false;
 			});
-		});
+		};
 
 		$scope.add = function(stationInfo) {
 			ChosenStations.add(stationInfo.station);
 			$location.path('/settings');
-		}
+		};
+
+		refresh($scope.useful);
 
 	});
 

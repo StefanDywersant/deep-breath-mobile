@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: add.html:9
+msgid "Active"
+msgstr ""
+
+#: add.html:4
+msgid "Add station"
+msgstr ""
+
+#: home.html:43
+msgid "Air quality"
+msgstr ""
+
+#: add.html:8
+msgid "All"
+msgstr ""
+
+#: home.html:48
+msgid "Bad"
+msgstr ""
+
+#: add.html:3
+msgid "Cancel"
+msgstr ""
+
+#: settings.html:3
+msgid "Done"
+msgstr ""
+
+#: home.html:45
+msgid "Good"
+msgstr ""
+
+#: settings.html:15
+msgid "Last sample:"
+msgstr ""
+
+#: add.html:27
+msgid "Last sample: none"
+msgstr ""
+
+#: home.html:46
+msgid "Moderate"
+msgstr ""
+
+#: settings.html:4
+msgid "Stations"
+msgstr ""
+
+#: home.html:47
+msgid "Sufficient"
+msgstr ""
+
+#: home.html:49
+msgid "Very bad"
+msgstr ""
+
+#: home.html:44
+msgid "Very good"
+msgstr ""

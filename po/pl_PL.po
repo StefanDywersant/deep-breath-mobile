@@ -1,0 +1,74 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: add.html:9
+msgid "Active"
+msgstr "Aktywne"
+
+#: add.html:4
+msgid "Add station"
+msgstr "Dodawanie stacji"
+
+#: home.html:43
+msgid "Air quality"
+msgstr "Jakość powietrza"
+
+#: add.html:8
+msgid "All"
+msgstr "Wszystkie"
+
+#: home.html:48
+msgid "Bad"
+msgstr "Zła"
+
+#: add.html:3
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: settings.html:3
+msgid "Done"
+msgstr "Gotowe"
+
+#: home.html:45
+msgid "Good"
+msgstr "Dobra"
+
+#: settings.html:15
+msgid "Last sample:"
+msgstr "Ostatni pomiar:"
+
+#: add.html:27
+msgid "Last sample: none"
+msgstr "Ostatni pomiar: brak"
+
+#: home.html:46
+msgid "Moderate"
+msgstr "Umiarkowana"
+
+#: settings.html:4
+msgid "Stations"
+msgstr "Stacje"
+
+#: home.html:47
+msgid "Sufficient"
+msgstr "Dostateczna"
+
+#: home.html:49
+msgid "Very bad"
+msgstr "Bardzo zła"
+
+#: home.html:44
+msgid "Very good"
+msgstr "Bardzo dobra"

@@ -5,7 +5,7 @@ angular.module('deep-breath')
 
 		var fetchStations = function(position) {
 			return $q.all([
-				Stations.nearest(position),
+				Stations.nearest({position: position, useful: true}),
 				ChosenStations.all()
 			]).spread(function(nearestStations, chosenStations) {
 				return nearestStations
