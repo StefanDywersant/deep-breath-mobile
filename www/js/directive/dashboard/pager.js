@@ -1,8 +1,8 @@
-angular.module('dbStationPager', [])
-	.directive('dbStationPager', function($ionicSlideBoxDelegate, $interval) {
+angular.module('deep-breath')
+	.directive('dbDashboardPager', function($ionicSlideBoxDelegate, $interval) {
 		return {
 			restrict: 'E',
-			templateUrl: 'templates/station_pager.html',
+			templateUrl: 'templates/dashboard/pager.html',
 			scope: {
 				slideBoxDelegateHandle: '@',
 				stations: '='
@@ -10,8 +10,6 @@ angular.module('dbStationPager', [])
 			link: function($scope, $element, $attr) {
 				var slideBox = $ionicSlideBoxDelegate.$getByHandle($scope.slideBoxDelegateHandle),
 					previousIndex;
-
-				$element.addClass('db-station-pager');
 
 				$scope.select = function(index) {
 					slideBox.slide(index);

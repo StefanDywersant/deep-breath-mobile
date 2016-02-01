@@ -1,6 +1,6 @@
 // Ionic Starter App
 
-angular.module('deep-breath', ['ionic', 'ngCordova', 'sprintf', 'dbStationPager', 'angular-svg-round-progress', 'angularMoment', '$q-spread', 'gettext', 'uiGmapgoogle-maps'])
+angular.module('deep-breath', ['ionic', 'ngCordova', 'sprintf', 'angular-svg-round-progress', 'angularMoment', '$q-spread', 'gettext', 'uiGmapgoogle-maps'])
 	.run(function ($ionicPlatform, amMoment, $cordovaGlobalization, gettextCatalog) {
 		$ionicPlatform.ready(function () {
 			if (window.cordova) {
