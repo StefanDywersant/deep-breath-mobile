@@ -1,5 +1,5 @@
 angular.module('deep-breath')
-	.controller('HomeCtrl', function($scope, $q, ChosenStations, $ionicPlatform, $cordovaGeolocation, Stations, $ionicSlideBoxDelegate, $ionicScrollDelegate, CONFIG) {
+	.controller('DashboardCtrl', function($scope, $q, ChosenStations, $ionicPlatform, $cordovaGeolocation, Stations, $ionicSlideBoxDelegate, $ionicScrollDelegate, CONFIG) {
 
 		var slideBox = $ionicSlideBoxDelegate.$getByHandle('stations');
 

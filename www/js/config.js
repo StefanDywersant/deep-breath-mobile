@@ -1,10 +1,10 @@
 angular.module('deep-breath')
 	.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, uiGmapGoogleMapApiProvider) {
 		$stateProvider
-			.state('home', {
+			.state('dashboard', {
 				url: '/',
-				templateUrl: 'templates/home.html',
-				controller: 'HomeCtrl',
+				templateUrl: 'templates/dashboard.html',
+				controller: 'DashboardCtrl',
 				cache: false
 			}).state('settings', {
 				url: '/settings',
