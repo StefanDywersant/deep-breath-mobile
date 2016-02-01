@@ -8,7 +8,7 @@
 		<ion-list>
 			<ion-item class="item-remove-animate" ng-repeat="stationInfo in stationInfos" show-delete="true" ng-click="showStation(stationInfo.station.uuid)">
 				<h2>{{stationInfo.station.name}}</h2>
-				<p>{{[stationInfo.station.address.city, stationInfo.station.address.code, stationInfo.station.address.street].join(', ')}}</p>
+				<p db-station-address address="stationInfo.station.address"></p>
 				<p>
 					<small>
 						<i class="icon" ng-class="{'ion-checkmark-circled balanced': stationInfo.last_measurement.status, 'ion-alert-circled assertive': !stationInfo.last_measurement.status}"></i>

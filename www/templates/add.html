@@ -19,7 +19,7 @@
 					<ion-item ng-if="$index == 0" class="item-divider"><strong>{{stationInfosByVoivodeship.voivodeship}}</strong></ion-item>
 					<ion-item ng-click="add(stationInfo)">
 						<h2>{{stationInfo.station.name}}</h2>
-						<p>{{[stationInfo.station.address.city, stationInfo.station.address.code, stationInfo.station.address.street].join(', ')}}</p>
+						<p db-station-address address="stationInfo.station.address"></p>
 						<p>
 							<small>
 								<i class="icon" ng-class="{'ion-checkmark-circled balanced': stationInfo.last_measurement.status, 'ion-alert-circled assertive': !stationInfo.last_measurement.status}"></i>
