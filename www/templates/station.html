@@ -1,0 +1,27 @@
+<ion-view id="station">
+	<ion-header-bar class="bar-stable">
+		<a class="button button-clear button-positive button-icon ion-ios-arrow-left" ng-click="back()" translate>Back</a>
+		<h1 class="title" translate>Station</h1>
+		<a ng-if="showAdd" class="button button-clear button-positive" ng-click="add(station)" translate>Add</a>
+	</ion-header-bar>
+	<ion-content>
+		<ui-gmap-google-map
+				center='map.center'
+				zoom='map.zoom'
+				options="{draggable: true, mapTypeControl: false, zoomControl: false, streetViewControl: false}"
+		>
+			<ui-gmap-marker coords="station.location" idkey="station.uuid"></ui-gmap-marker>
+		</ui-gmap-google-map>
+		<h3>{{station.name}}</h3>
+		<dl>
+			<dt>Street</dt>
+			<dd>{{station.address.street}}</dd>
+
+			<dt>City</dt>
+			<dd>{{station.address.code}} {{station.address.city}}</dd>
+
+			<dt>Voivodeship</dt>
+			<dd>{{station.address.voivodeship}}</dd>
+		</dl>
+	</ion-content>
+</ion-view>

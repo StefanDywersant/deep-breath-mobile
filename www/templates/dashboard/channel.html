@@ -1,0 +1,55 @@
+<div class="col icon">
+	<i ng-if="channel.parameter.code == 'co'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'pm10'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'pm2.5'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'no2'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'so2'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'bzn'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'o3'" class="quality score-{{channel.index.score}}"></i>
+
+	<i ng-if="channel.parameter.code == 'temp'" class="wi wi-thermometer"></i>
+	<i ng-if="channel.parameter.code == 'humid'" class="wi wi-humidity"></i>
+	<i ng-if="channel.parameter.code == 'press'" class="wi wi-barometer"></i>
+	<i ng-if="channel.parameter.code == 'rain'" class="wi wi-rain"></i>
+	<i ng-if="channel.parameter.code == 'ws'" class="wi wi-strong-wind"></i>
+	<i ng-if="channel.parameter.code == 'wd'" class="wi wi-wind towards-{{'%.0f' | sprintf : channel.last_measurement.value}}-deg"></i>
+</div>
+
+<div class="col name" ng-if="channel.parameter.code == 'bzn'" translate>Benzene C₆H₆</div>
+<div class="col name" ng-if="channel.parameter.code == 'co'" translate>Carbon monoxide</div>
+<div class="col name" ng-if="channel.parameter.code == 'ebzn'" translate>Ethylbenzene C₈H₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'hcho'" translate>Formaldehyde</div>
+<div class="col name" ng-if="channel.parameter.code == 'hg'" translate>Mercury gas</div>
+<div class="col name" ng-if="channel.parameter.code == 'mpxy'" translate>M-P-Xylene C₈H₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'no'" translate>Nitrogen monoxide NO</div>
+<div class="col name" ng-if="channel.parameter.code == 'no2'" translate>Nitrogen dioxide NO₂</div>
+<div class="col name" ng-if="channel.parameter.code == 'nox'" translate>Nitrogen oxides NOₓ</div>
+<div class="col name" ng-if="channel.parameter.code == 'o3'" translate>Ozone O₃</div>
+<div class="col name" ng-if="channel.parameter.code == 'oxy'" translate>O-Xylene C₈H₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pb'" translate>Lead</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10'" translate>Particulate matter PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_as'" translate>Arsenic in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_baa'" translate>Benzo(a)anthracene in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_bap'" translate>Benzo(a)pyrene in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_bbf'" translate>Benzo(b)fluoranthene in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_bjf'" translate>Benzo(j)fluoranthene in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_bkf'" translate>Benzo(k)fluoranthene in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_cd'" translate>Kadm in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_dbaha'" translate>Dibenzo(a,h)anthracene in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_ip'" translate>Indeno(1,2,3-cd)pyrene in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_ni'" translate>Nickel in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm10_pb'" translate>Lead in PM₁₀</div>
+<div class="col name" ng-if="channel.parameter.code == 'pm2.5'" translate>Particulate matter PM₂.₅</div>
+<div class="col name" ng-if="channel.parameter.code == 'rad'" translate>Global radiation</div>
+<div class="col name" ng-if="channel.parameter.code == 'so2'" translate>Sulphur dioxide SO₂</div>
+<div class="col name" ng-if="channel.parameter.code == 'tln'" translate>Toluene C₇H₈</div>
+<div class="col name" ng-if="channel.parameter.code == 'uvb'" translate>UVB radiation</div>
+
+<div class="col name" ng-if="channel.parameter.code == 'humid'" translate>Relative humidity</div>
+<div class="col name" ng-if="channel.parameter.code == 'press'" translate>Atmospheric pressure</div>
+<div class="col name" ng-if="channel.parameter.code == 'rain'" translate>Precipitation</div>
+<div class="col name" ng-if="channel.parameter.code == 'temp'" translate>Temperature</div>
+<div class="col name" ng-if="channel.parameter.code == 'wd'" translate>Wind direction</div>
+<div class="col name" ng-if="channel.parameter.code == 'ws'" translate>Wind speed</div>
+
+<div class="col value" ng-bind-html="channel.parameter.unit.format | smallUnit | sprintf : channel.last_measurement.value"></div>

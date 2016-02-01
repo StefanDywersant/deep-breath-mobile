@@ -1,5 +1,5 @@
 angular.module('deep-breath')
-	.controller('SettingsCtrl', function($scope, ChosenStations) {
+	.controller('SettingsCtrl', function($scope, $location, ChosenStations) {
 
 		ChosenStations.all().then(function(stations) {
 			$scope.stationInfos = stations.map(function(station) {
@@ -30,6 +30,10 @@ angular.module('deep-breath')
 		$scope.delete = function(stationInfo) {
 			ChosenStations.remove(stationInfo.station);
 			$scope.stationInfos.splice($scope.stationInfos.indexOf(stationInfo), 1);
+		};
+
+		$scope.showStation = function(uuid) {
+			$location.path('/station/' + uuid);
 		};
 
 	});

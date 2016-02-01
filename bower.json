@@ -8,6 +8,8 @@
     "open-sans-fontface": "~1.4.2",
     "weather-icons": "~2.0.10",
     "angular-q-spread": "~1.1.0",
-    "angular-gettext": "~2.2.0"
+    "angular-gettext": "~2.2.0",
+    "angular-google-maps": "^2.3.1",
+    "lodash": "^4.1.0"
   }
 }

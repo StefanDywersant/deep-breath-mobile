@@ -1,5 +1,5 @@
 angular.module('deep-breath')
-	.controller('AddCtrl', function($scope, $location, Stations, ChosenStations, $ionicScrollDelegate) {
+	.controller('AddCtrl', function($scope, $location, Stations, $ionicScrollDelegate) {
 
 		$scope.useful = true;
 
@@ -61,8 +61,7 @@ angular.module('deep-breath')
 		};
 
 		$scope.add = function(stationInfo) {
-			ChosenStations.add(stationInfo.station);
-			$location.path('/settings');
+			$location.path('/station/' + stationInfo.station.uuid + '/1');
 		};
 
 		refresh($scope.useful);

@@ -6,7 +6,7 @@
 	</ion-header-bar>
 	<ion-content>
 		<ion-list>
-			<ion-item class="item-remove-animate" ng-repeat="stationInfo in stationInfos" show-delete="true">
+			<ion-item class="item-remove-animate" ng-repeat="stationInfo in stationInfos" show-delete="true" ng-click="showStation(stationInfo.station.uuid)">
 				<h2>{{stationInfo.station.name}}</h2>
 				<p>{{[stationInfo.station.address.city, stationInfo.station.address.code, stationInfo.station.address.street].join(', ')}}</p>
 				<p>
