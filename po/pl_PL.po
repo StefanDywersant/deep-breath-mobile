@@ -25,7 +25,7 @@ msgstr "Dodaj"
 msgid "Add station"
 msgstr "Dodawanie stacji"
 
-#: home.html:43
+#: dashboard.html:43
 msgid "Air quality"
 msgstr "Jakość powietrza"
 
@@ -45,7 +45,7 @@ msgstr "Ciśnienie atmosferyczne"
 msgid "Back"
 msgstr "Wstecz"
 
-#: home.html:48
+#: dashboard.html:48
 msgid "Bad"
 msgstr "Zła"
 
@@ -81,6 +81,14 @@ msgstr "Anuluj"
 msgid "Carbon monoxide"
 msgstr "Tlenek węgla CO"
 
+#: station.html:26
+msgid "City"
+msgstr "Miasto"
+
+#: station.html:22
+msgid "Code"
+msgstr "Kod pocztowy"
+
 #: dashboard/channel.html:38
 msgid "Dibenzo(a,h)anthracene in PM₁₀"
 msgstr "Dibenzo(a,h)antracen w PM₁₀"
@@ -101,7 +109,7 @@ msgstr "Formaldehyd"
 msgid "Global radiation"
 msgstr "Promieniowanie globalne"
 
-#: home.html:45
+#: dashboard.html:45
 msgid "Good"
 msgstr "Dobra"
 
@@ -137,7 +145,7 @@ msgstr "M-P-Ksylen C₈H₁₀"
 msgid "Mercury gas"
 msgstr "Rtęć gazowa"
 
-#: home.html:46
+#: dashboard.html:46
 msgid "Moderate"
 msgstr "Umiarkowana"
 
@@ -189,7 +197,11 @@ msgstr "Stacja"
 msgid "Stations"
 msgstr "Stacje"
 
-#: home.html:47
+#: station.html:18
+msgid "Street"
+msgstr "Ulica"
+
+#: dashboard.html:47
 msgid "Sufficient"
 msgstr "Dostateczna"
 
@@ -209,13 +221,17 @@ msgstr "Toluen C₇H₈"
 msgid "UVB radiation"
 msgstr "Promieniowanie UVB"
 
-#: home.html:49
+#: dashboard.html:49
 msgid "Very bad"
 msgstr "Bardzo zła"
 
-#: home.html:44
+#: dashboard.html:44
 msgid "Very good"
 msgstr "Bardzo dobra"
+
+#: station.html:30
+msgid "Voivodeship"
+msgstr "Województwo"
 
 #: dashboard/channel.html:52
 msgid "Wind direction"

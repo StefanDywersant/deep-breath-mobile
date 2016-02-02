@@ -8,20 +8,28 @@
 		<ui-gmap-google-map
 				center='map.center'
 				zoom='map.zoom'
-				options="{draggable: true, mapTypeControl: false, zoomControl: false, streetViewControl: false}"
+				options="{draggable: true, mapTypeControl: true, zoomControl: false, streetViewControl: false}"
 		>
 			<ui-gmap-marker coords="station.location" idkey="station.uuid"></ui-gmap-marker>
 		</ui-gmap-google-map>
-		<h3>{{station.name}}</h3>
-		<dl>
-			<dt>Street</dt>
-			<dd>{{station.address.street}}</dd>
-
-			<dt>City</dt>
-			<dd>{{station.address.code}} {{station.address.city}}</dd>
-
-			<dt>Voivodeship</dt>
-			<dd>{{station.address.voivodeship}}</dd>
-		</dl>
+		<h3 class="name">{{station.name}}</h3>
+		<ul class="table address">
+			<li class="row" ng-if="station.address.street">
+				<div class="col col-33 title" translate>Street</strong></div>
+				<div class="col col-67">{{station.address.street}}</div>
+			</li>
+			<li class="row" ng-if="station.address.code">
+				<div class="col col-33 title" translate>Code</div>
+				<div class="col col-67">{{station.address.code}}</div>
+			</li>
+			<li class="row" ng-if="station.address.city">
+				<div class="col col-33 title" translate>City</div>
+				<div class="col col-67">{{station.address.city}}</div>
+			</li>
+			<li class="row" ng-if="station.address.voivodeship">
+				<div class="col col-33 title" translate>Voivodeship</div>
+				<div class="col col-67">{{station.address.voivodeship}}</div>
+			</li>
+		</ul>
 	</ion-content>
 </ion-view>

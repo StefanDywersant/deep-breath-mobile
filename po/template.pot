@@ -16,7 +16,7 @@ msgstr ""
 msgid "Add station"
 msgstr ""
 
-#: home.html:43
+#: dashboard.html:43
 msgid "Air quality"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: home.html:48
+#: dashboard.html:48
 msgid "Bad"
 msgstr ""
 
@@ -72,6 +72,14 @@ msgstr ""
 msgid "Carbon monoxide"
 msgstr ""
 
+#: station.html:26
+msgid "City"
+msgstr ""
+
+#: station.html:22
+msgid "Code"
+msgstr ""
+
 #: dashboard/channel.html:38
 msgid "Dibenzo(a,h)anthracene in PM₁₀"
 msgstr ""
@@ -92,7 +100,7 @@ msgstr ""
 msgid "Global radiation"
 msgstr ""
 
-#: home.html:45
+#: dashboard.html:45
 msgid "Good"
 msgstr ""
 
@@ -129,7 +137,7 @@ msgstr ""
 msgid "Mercury gas"
 msgstr ""
 
-#: home.html:46
+#: dashboard.html:46
 msgid "Moderate"
 msgstr ""
 
@@ -181,7 +189,11 @@ msgstr ""
 msgid "Stations"
 msgstr ""
 
-#: home.html:47
+#: station.html:18
+msgid "Street"
+msgstr ""
+
+#: dashboard.html:47
 msgid "Sufficient"
 msgstr ""
 
@@ -201,12 +213,16 @@ msgstr ""
 msgid "UVB radiation"
 msgstr ""
 
-#: home.html:49
+#: dashboard.html:49
 msgid "Very bad"
 msgstr ""
 
-#: home.html:44
+#: dashboard.html:44
 msgid "Very good"
+msgstr ""
+
+#: station.html:30
+msgid "Voivodeship"
 msgstr ""
 
 #: dashboard/channel.html:52
