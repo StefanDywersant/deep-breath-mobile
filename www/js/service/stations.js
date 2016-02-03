@@ -16,14 +16,15 @@ angular.module('deep-breath')
 						end: new Date(channel_group.end),
 						channels: channel_group.channels.map(function(channel) {
 							return {
-								uuid: '',
+								uuid: channel.uuid,
 								last_measurement: {
 									begin: channel.last_measurement.begin,
 									end: channel.last_measurement.end,
 									value: channel.last_measurement.value
 								},
 								parameter: channel.parameter,
-								index: channel.index
+								index: channel.index,
+								flags: channel.flags
 							}
 						}),
 						index: channel_group.index

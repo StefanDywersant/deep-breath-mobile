@@ -12,7 +12,9 @@
 		>
 			<ui-gmap-marker coords="station.location" idkey="station.uuid"></ui-gmap-marker>
 		</ui-gmap-google-map>
+
 		<h3 class="name">{{station.name}}</h3>
+
 		<ul class="table address">
 			<li class="row" ng-if="station.address.street">
 				<div class="col col-33 title" translate>Street</strong></div>
@@ -29,6 +31,20 @@
 			<li class="row" ng-if="station.address.voivodeship">
 				<div class="col col-33 title" translate>Voivodeship</div>
 				<div class="col col-67">{{station.address.voivodeship}}</div>
+			</li>
+		</ul>
+
+		<hr/>
+
+		<ul class="table parameter-groups">
+			<li ng-repeat="parameter_group in station.parameter_groups" class="row">
+				<div ng-if="parameter_group.code == 'air_quality'" class="col col-33 title" translate>Air quality</div>
+				<div ng-if="parameter_group.code == 'weather'" class="col col-33 title" translate>Weather</div>
+				<div class="col col-67">
+					<div ng-repeat="channel_group in station.channel_groups" ng-init="channels = (channel_group.channels | channelsGroup : parameter_group.parameters)">
+						<p ng-repeat="channel in channels" db-parameter-name code="channel.parameter.code" ng-class="{'automatic': (channel.flags | bitwiseAnd : 16), 'manual': (channel.flags | bitwiseAnd : 32)}"></p>
+					</div>
+				</div>
 			</li>
 		</ul>
 	</ion-content>
