@@ -1,4 +1,4 @@
-#home {
+#dashboard {
 	background: rgb(153,204,255);
 	background: -moz-linear-gradient(top,  rgba(153,204,255,1) 0%, rgba(0,114,188,1) 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(153,204,255,1)), color-stop(100%,rgba(0,114,188,1)));
@@ -33,11 +33,27 @@
 				width: 280px;
 				margin: 2em auto;
 
-				i {
-					font-size: 80px;
-					color: #fff;
+				.indicator {
+					position: relative;
 					float: left;
-					margin-right: 8px;
+
+					.progress {
+						margin-right: 8px;
+					}
+
+					.value {
+						position: absolute;
+						top: 40px;
+						left: 40px;
+						-webkit-transform: -webkit-translate(-50%, -50%);
+						transform: translate(-50%, -50%);
+						color: #fff;
+						font-size: 12px;
+
+						small {
+							font-size: 9px;
+						}
+					}
 				}
 
 				.right {
@@ -69,47 +85,18 @@
 					color: rgba(255,255,255,0.7);
 					padding: 0 20px;
 					line-height: 18px;
-				}
 
-				.row {
-					.col {
-						&.icon {
-							font-size: 18px;
-							color: #fff;
-							text-align: center;
-							@include flex(0 0 30px);
+					.time-ago {
+						float: right;
 
-							i.quality {
-								border-radius: 50%;
-								width: 18px;
-								height: 18px;
-								border: 1px solid #006600;
-								background: #4cd964;
-								display: inline-block;
-							}
+						i {
+							margin-right: 5px;
+							vertical-align: middle;
 						}
 
-						&.name {
-							font-size: 12px;
-							font-style: italic;
-							color: rgba(255,255,255,0.7);
+						span {
+							font-size: 8px;
 						}
-
-						&.value {
-							font-size: 14px;
-							color: #fff;
-							text-align: right;
-							@include flex(0 0 95px);
-
-							small {
-								font-size: 10px;
-							}
-						}
-					}
-
-					&.temp .col.value small,
-					&.wd .col.value small {
-						font-size: inherit;
 					}
 				}
 			}

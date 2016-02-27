@@ -1,0 +1,23 @@
+<ion-view ion-title="Settings" id="settings">
+	<ion-header-bar class="bar-stable">
+		<a class="button button-clear button-positive" ng-href="#/" translate>Done</a>
+		<h1 class="title" translate>Stations</h1>
+		<a class="button button-clear button-positive button-icon ion-ios-plus-empty" ng-href="#/add"></a>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list>
+			<ion-item class="item-remove-animate" ng-repeat="stationInfo in stationInfos" show-delete="true" ng-click="showStation(stationInfo.station.uuid)">
+				<h2>{{stationInfo.station.name}}</h2>
+				<p db-station-address address="stationInfo.station.address"></p>
+				<p>
+					<small>
+						<i class="icon" ng-class="{'ion-checkmark-circled balanced': stationInfo.last_measurement.status, 'ion-alert-circled assertive': !stationInfo.last_measurement.status}"></i>
+						<span translate>Last sample:</span> <span am-time-ago="stationInfo.last_measurement.date"></span>
+					</small>
+				</p>
+				<i class="icon ion-chevron-right icon-accessory pull-right"></i>
+				<ion-option-button class="button-assertive ion-minus-circled" ng-click="delete(stationInfo)"></ion-option-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,70 @@
+<ion-view id="dashboard">
+	<svg>
+		<linearGradient id="indicator-gradient-1" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#00ff00" />
+			<stop offset="80%" stop-color="#00e600" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-2" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#a6ff00" />
+			<stop offset="80%" stop-color="#95e600" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-3" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#e6ff00" />
+			<stop offset="80%" stop-color="#cfe600" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-4" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#ffc800" />
+			<stop offset="80%" stop-color="#e6b400" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-5" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#e25a00" />
+			<stop offset="80%" stop-color="#c95000" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-6" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#8b0000" />
+			<stop offset="80%" stop-color="#720000" />
+		</linearGradient>
+		<linearGradient id="indicator-gradient-bg" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="20%" stop-color="#ffffff" stop-opacity="0.15" />
+			<stop offset="80%" stop-color="#ffffff" stop-opacity="0.4"/>
+		</linearGradient>
+	</svg>
+	<ion-content scroll="false">
+		<ion-slide-box show-pager="false" delegate-handle="stations" on-slide-changed="slideChanged($index)">
+			<ion-slide ng-repeat="station in stations">
+				<ion-content delegate-handle="station-{{$index}}" ng-init="overallIndex = station.channel_groups[0].index">
+					<p class="station-name"><i class="icon ion-ios-location"></i> {{station.name}}</p>
+					<div ng-if="overallIndex" class="overall">
+						<div class="indicator">
+							<div round-progress class="progress" radius="40" max="10" current="10 - overallIndex.value" bgcolor="url(#indicator-gradient-bg)" color="url(#indicator-gradient-{{overallIndex.score}})"></div>
+							<span class="value">{{overallIndex.value | number : 1}}<small> / 10</small></span>
+						</div>
+						<div class="right">
+							<label translate>Air quality</label>
+							<p ng-if="overallIndex.score == 1" class="air-quality" translate>Very good</p>
+							<p ng-if="overallIndex.score == 2" class="air-quality" translate>Good</p>
+							<p ng-if="overallIndex.score == 3" class="air-quality" translate>Moderate</p>
+							<p ng-if="overallIndex.score == 4" class="air-quality" translate>Sufficient</p>
+							<p ng-if="overallIndex.score == 5" class="air-quality" translate>Bad</p>
+							<p ng-if="overallIndex.score == 6" class="air-quality" translate>Very bad</p>
+						</div>
+					</div>
+					<div ng-repeat="channel_group in station.channel_groups">
+						<div class="table {{group.code}}" ng-repeat="group in station.parameter_groups" ng-init="channels = (channel_group.channels | channelsGroup : group.parameters)">
+							<div ng-if="channels.length">
+								<h2>{{group.name}}<span class="time-ago"><i class="icon ion-clock"></i><span am-time-ago="channel_group.end"></span></span></h2>
+								<db-dashboard-channel ng-repeat="channel in channels" channel="channel"></db-dashboard-channel>
+							</div>
+						</div>
+					</div>
+				</ion-content>
+			</ion-slide>
+		</ion-slide-box>
+	</ion-content>
+	<ion-footer-bar align-title="left">
+		<db-dashboard-pager stations="stations" slide-box-delegate-handle="stations"></db-dashboard-pager>
+		<div class="buttons pull-right">
+			<a class="button button-icon icon ion-ios-gear" ng-href="#/settings"></a>
+		</div>
+	</ion-footer-bar>
+</ion-view>

@@ -1,0 +1,44 @@
+#station {
+	.angular-google-map-container {
+		height: 300px;
+	}
+
+	.name {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	.table {
+		.title {
+			font-weight: bold;
+		}
+
+		&.parameter-groups {
+			p {
+				margin: 0;
+
+				&.automatic:after, &.manual:after {
+					color: #fff;
+					font-size: 10px;
+					text-align: center;
+					line-height: 16px;
+					min-width: 18px;
+					display: inline-block;
+					border-radius: 50%;
+				}
+
+				&.automatic:after {
+					content: 'A';
+					background: #00b300;
+
+				}
+
+				&.manual:after {
+					content: 'M';
+					background: #963c00;
+				}
+			}
+		}
+	}
+
+}

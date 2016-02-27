@@ -1,0 +1,20 @@
+<div class="col icon">
+	<i ng-if="channel.parameter.code == 'co'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'pm10'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'pm2.5'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'no2'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'so2'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'bzn'" class="quality score-{{channel.index.score}}"></i>
+	<i ng-if="channel.parameter.code == 'o3'" class="quality score-{{channel.index.score}}"></i>
+
+	<i ng-if="channel.parameter.code == 'temp'" class="wi wi-thermometer"></i>
+	<i ng-if="channel.parameter.code == 'humid'" class="wi wi-humidity"></i>
+	<i ng-if="channel.parameter.code == 'press'" class="wi wi-barometer"></i>
+	<i ng-if="channel.parameter.code == 'rain'" class="wi wi-rain"></i>
+	<i ng-if="channel.parameter.code == 'ws'" class="wi wi-strong-wind"></i>
+	<i ng-if="channel.parameter.code == 'wd'" class="wi wi-wind towards-{{'%.0f' | sprintf : channel.last_measurement.value}}-deg"></i>
+</div>
+
+<div class="col name" db-parameter-name code="channel.parameter.code"></div>
+
+<div class="col value" ng-bind-html="channel.parameter.unit.format | smallUnit | sprintf : channel.last_measurement.value"></div>

@@ -23,8 +23,12 @@ $ionicons-font-path: '../lib/ionic/fonts' !default;
 
 @import url('../lib/open-sans-fontface/open-sans.css');
 
-@import 'home';
-@import 'station_pager';
+@import 'dashboard';
+@import 'settings';
+@import 'add';
+@import 'dashboard/channel';
+@import 'dashboard/pager';
+@import 'station';
 
 body {
 	font-family: 'Open Sans', sans-serif;
