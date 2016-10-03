@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="pl.czystybeton.deepbreath" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="pl.czystybeton.deepbreath" version="0.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Deep breath</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Air quality monitoring application
   </description>
   <author email="karol@maciaszek.pl" href="http://czystybeton.pl/">
       Karol Maciaszek
