@@ -1,5 +1,0 @@
-<span ng-if="address.street && (address.city || address.code)">{{address.street}},</span>
-<span ng-if="address.street && !(address.city || address.code)">{{address.street}}</span>
-
-<span ng-if="!address.code && address.city">{{address.city}}</span>
-<span ng-if="address.code && address.city">{{address.code}} {{address.city}}</span>
