@@ -9,9 +9,11 @@
   "dependencies": {
     "react": "15.3.2",
     "react-native": "0.35.0",
+    "react-native-i18n": "^0.1.1",
     "react-native-linear-gradient": "^1.5.13",
     "react-native-swiper": "^1.5.2",
-    "react-native-vector-icons": "^2.1.0"
+    "react-native-vector-icons": "^2.1.0",
+    "sprintf-js": "^1.0.3"
   },
   "jest": {
     "preset": "jest-react-native"
